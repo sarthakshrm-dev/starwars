@@ -335,7 +335,7 @@ function App() {
         <tbody>
           {isLoading ? (
             <tr>
-              <td colSpan={13}>
+              <td colSpan={22}>
                 <div className="loading-container">
                   <i className="fa fa-spinner fa-spin"></i>
                 </div>
