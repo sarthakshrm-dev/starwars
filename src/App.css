@@ -1,38 +1,310 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
+  background-image: url('./assets/background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.flex-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  padding: 0 20px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #333;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+input[type="text"] {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 16px;
+}
+
+input[type="text"]::placeholder {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.fa-search {
+  color: #fff;
+  margin-left: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
+.table-options {
+  padding: 20px 20px 0 20px;
+}
+
+table {
+  width: 90%;
+  max-width: 800px;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid #f8e71c;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+}
+
+thead {
+  background-color: #f8e71c;
+  color: #000;
+}
+
+th:not(th.table-options) {
+  padding: 20px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: uppercase;
+  border-bottom: 2px solid #333333;
+  cursor: pointer;
+}
+
+tbody {
+  color: #fff;
+}
+
+td:not(thead tr td) {
+  padding: 20px;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+tbody tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+tr:not(:last-child) {
+  border-bottom: 1px solid #f8e71c;
+}
+
+tfoot {
+  color: #f8e71c;
+  font-weight: bold;
+}
+
+.pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+tfoot button {
+  border-radius: 50%;
+  background-color: #f8e71c;
+  color: #000;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+tfoot button:hover {
+  background-color: #fdec3a;
+}
+
+tfoot button:disabled {
+  cursor: initial;
+  background-color: gray;
+  color: #fff;
+}
+
+tfoot button:disabled:hover {
+  transform: none;
+}
+
+tfoot .fa-arrow-left,
+tfoot .fa-arrow-right {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+tfoot button:not(:disabled):hover .fa-arrow-left,
+tfoot button:not(:disabled):hover .fa-arrow-right {
+  transform: scale(1.2);
+}
+
+.error-state,
+.loading-state,
+.empty-state {
+  text-align: center;
+  font-size: 18px;
+  margin: 20px 0;
+}
+
+.error-state {
+  color: #ff4136;
+}
+
+.loading-state {
+  color: #f8e71c;
+}
+
+.empty-state {
+  color: #ff851b;
+}
+
+.icon {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.fa-android {
+  color: #00c853;
+}
+
+.fa-user-circle {
+  color: #039be5;
+}
+
+.fa-question {
+  color: #bbb;
+}
+
+.fa-exclamation-circle {
+  color: #ff4136;
+}
+
+.fa-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(360deg);
   }
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0 30px 0;
+}
+
+.card {
+  flex: 1;
+  background-color: #333333;
+  padding: 20px;
+  text-align: center;
+}
+
+.card i {
+  font-size: 36px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.card .card-info .count {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.card .card-info .label {
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.error-container {
+  color: #ffffff;
+  text-align: center;
+}
+
+.loading-container {
+  text-align: center;
+}
+
+.loading-container i {
+  font-size: 24px;
+  animation: spin 1s linear infinite;
+}
+
+.empty-container {
+  background-color: #ffcc00;
+  padding: 10px;
+  color: #000000;
+  text-align: center;
+}
+
+.dropdown {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: -25px 0 -25px 0;
+}
+
+.dropdown-toggle {
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px 15px;
+  background-color: #333;
+  color: #fff;
+}
+
+.dropdown-toggle i {
+  margin-left: 10px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+  background-color: #222;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-item {
+  padding: 10px 15px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #555;
+}
+
+.dropdown-item.active {
+  background-color: #888;
 }
